@@ -1,0 +1,111 @@
+﻿<ion-header>
+    <ion-navbar>
+
+        <ion-title>
+            {{TITLE}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <ion-icon ios="ios-close" md="md-close" style="zoom:2.0;"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <div class="content">
+
+       <div class="time-content keyvalue-row">
+            <div class="date keyvalue">
+
+                <div class="label">DATE</div>
+                <div class="value">
+                    <div><span>{{DATE}}</span></div>
+                    <div>
+                        <span>{{WEEK}}</span>
+                        <span style="color:crimson">{{COST}}원</span>
+                    </div>
+                </div>
+            </div>
+            <div class="time keyvalue">
+                <div class="label">TIME</div>
+                <div class="value">
+                    <span>{{CREATE_HOUR}}:{{CREATE_MIN}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="location-content">
+            <div class="keyvalue">
+                <div>ADDRESS</div>
+                <div class="cinema">
+                    <address>{{ADDRESS}}</address>
+                </div>
+            </div>
+        </div>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <div>
+
+
+                        <div class="ratings" style="align-content: center">
+                            <img src="{{this.webServiceUrl}}/UPLOAD/ART/{{IMG_ALIAS}}" />
+                            <div class="imdb">
+                                <ion-badge><span>공연시간<span class="nb">{{RUNNING}}분</span></span></ion-badge>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+
+
+
+
+
+                </ion-col>
+                <ion-col>
+                    <p></p>
+                 
+                    <div class="seats-content" *ngFor="let item of itemsSeat; let i = index">
+                        <div class="seat-container keyvalue-row">
+
+                            <div class="seat keyvalue">
+                                <span>SEAT</span>
+                                <span>{{item.SEAT}}</span>
+                            </div>
+
+                            <div class="price keyvalue">
+                                <span>PRICE</span>
+                                <span>{{COST}}원</span>
+                           
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+
+
+
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar padding-left padding-right>
+        <div class="total">
+            <div class="label">TOTAL
+            </div>
+            <div class="sum">
+                <div class="cash">{{MONEY}}원</div>
+                <div class="bonus">{{BOOK_PEOPLE}}명</div>
+            </div>
+        </div>
+        <button class="pay" ion-button color="secondary" (click)="confirmPay()" icon-left large [disabled]="false">
+            <ion-icon name="card"></ion-icon>
+            결제하기
+        </button>
+    </ion-toolbar>
+</ion-footer>

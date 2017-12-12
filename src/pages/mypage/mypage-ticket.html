@@ -1,0 +1,126 @@
+﻿<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+           TICKET
+        </ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+<ion-content no-padding>
+    <ng-container>
+        <div class="ticket-content"  >
+
+          
+            <!-- Ticket  -->
+
+            <div class="seats-content" *ngFor="let list of items">
+                <!-- Info -->
+                <ion-card>
+
+
+
+                    <ion-list>
+                        <ion-item>
+                            <ion-thumbnail item-start>
+                                <img src="{{this.webServiceUrl}}/UPLOAD/MAIN/{{list.MEMBER_IMG}}"/>
+                            </ion-thumbnail>
+                            <h2>{{list.MEMBER_ALIAS}}</h2>
+                            <h3>{{list.ADDRESS}}</h3>
+                            <p>예약번호-{{list.BOOK_RAWID}}</p>
+                            <button ion-button clear item-end (click)="showModalPage(list)">View</button>
+                        </ion-item>
+                    </ion-list>
+
+                    <ion-slides pager="true" padding>
+
+
+
+                        <ion-slide class="seat-container" *ngFor="let item of itemsInfo | artMyTicketFilter:list.BOOK_RAWID; let i = index">
+
+
+
+
+
+                            <div class="seat-info seat-info-main">
+                                <div class="screen">
+                                    <span>DATE</span>
+
+                                    <span>{{item.OPEN_DTTS | timetoDataConvert}}</span>
+                                </div>
+                                <div class="row">
+                                    <span>TIME</span>
+                                    <span>{{item.HH}}:{{item.MM}}</span>
+                                </div>
+                                <div class="seat">
+                                    <span>SHOW</span>
+                                    <span>{{i+1}}부</span>
+                                </div>
+                            </div>
+                            <div class="seat-info seat-info-other">
+                                <div class="price">
+                                    <span>PRICE</span>
+                                    <span>{{item.USER_COST}}원</span>
+                                </div>
+                                <div class="week">
+                                    <span>PEOPLE</span>
+                                    <span>{{item.TICKET}}명</span>
+                                </div>
+                                <div class="time">
+                                    <span>TOTAL</span>
+                                    <span>{{item.TICKET_COST}}원</span>
+                                </div>
+                            </div>
+
+                        </ion-slide>
+
+                        <ion-slide class="seat-container">
+
+
+
+                            <div class="seat-info seat-info-main">
+                                <div class="screen">
+                                    <span>DATE</span>
+
+                                    <span>{{list.OPEN_DTTS | timetoDataConvert}}</span>
+                                </div>
+                        
+                            </div>
+                            <div class="seat-info seat-info-other">
+                                <div class="price">
+                                    <span>PRICE</span>
+                                    <span>{{list.FOOD_COST/list.FOOD}}원</span>
+                                </div>
+                                <div class="week">
+                                    <span>FOOD</span>
+                                    <span>{{list.FOOD}}개</span>
+                                </div>
+                                <div class="time">
+                                    <span>TOTAL</span>
+                                    <span>{{list.FOOD_COST}}원</span>
+                                </div>
+                            </div>
+
+
+
+
+                        </ion-slide>
+
+
+                    </ion-slides>
+
+
+                </ion-card>
+            </div>
+        </div>
+    </ng-container>
+
+
+
+</ion-content>
+<ion-footer>
+
+</ion-footer>

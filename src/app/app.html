@@ -1,0 +1,60 @@
+﻿<ion-split-pane>
+    <ion-menu [content]="content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>MenuTTTTTT</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content class="no-scroll">
+
+
+
+
+            <ion-toolbar>
+                <ion-buttons end>
+                    <button ion-button clear icon-only color="danger">
+                        <ion-icon ios="ios-notifications" md="md-notifications"></ion-icon>
+                    </button>
+                </ion-buttons>
+            </ion-toolbar>
+
+
+
+            <ion-grid id="section-avatar">
+                <ion-row>
+                    <ion-col></ion-col>
+                    <ion-col padding-top>
+
+                        <img *ngIf="!isAuthority" src="./assets/images/logo.png" class="avatar"/>
+                        <img *ngIf="isAuthority" src="./assets/images/3.png" class="avatar"/>
+
+                    </ion-col>
+                    <ion-col id="section-btns" text-right>
+
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-10></ion-col>
+                   
+
+                    <ion-col *ngIf="isAuthority" id="section-info" center class="text-center">
+                        <div class="nickname">{{alias}}</div>
+                        <div class="bio">{{mail}}</div>
+                    </ion-col>
+
+                    <ion-col width-10></ion-col>
+                </ion-row>
+            </ion-grid>
+
+
+
+            <ion-list>
+                <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                    {{p.title}}
+                </button>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+    <ion-nav [root]="rootPage" #content main swipeBackEnabled="false"></ion-nav>
+</ion-split-pane>

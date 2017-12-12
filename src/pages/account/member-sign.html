@@ -1,0 +1,66 @@
+﻿<ion-header>
+    <ion-navbar>
+        <ion-title>회원가입</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+    <div class="content">
+        <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+        <form [formGroup]="myForm">
+            <div class="singup-form">
+
+
+                <div class="account">
+      
+                    <ion-list>
+                        <ion-item>
+                            <ion-icon ios="ios-quote" md="md-quote" item-left></ion-icon>
+                            <ion-label>Name</ion-label>
+                            <ion-input formControlName="name" type="name" [class.invalid]="!myForm.controls.name.valid && (myForm.controls.name.dirty || submitAttempt)" clearInput></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-icon ios="ios-mail" md="md-mail" item-left></ion-icon>
+                            <ion-label>Mail</ion-label>
+                            <ion-input formControlName="email" type="email" [class.invalid]="!myForm.controls.email.valid && (myForm.controls.email.dirty || submitAttempt)" clearInput></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-icon ios="ios-lock" md="md-lock" item-left></ion-icon>
+                            <ion-label>Password</ion-label>
+                            <ion-input type="password"  formControlName="password_1" [class.invalid]="!myForm.controls.password_1.valid && (myForm.controls.password_1.dirty || submitAttempt)" clearInput></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-icon ios="ios-unlock" md="md-unlock" item-left></ion-icon>
+                            <ion-label>Password</ion-label>
+                            <ion-input type="password"  formControlName="password_2" [class.invalid]="!myForm.controls.password_2.valid && (myForm.controls.password_2.dirty || submitAttempt)" clearInput></ion-input>
+                        </ion-item>
+        
+                        <ion-item>
+                            <ion-icon name="call" item-left></ion-icon>
+                            <ion-label>Phone</ion-label>
+                            <ion-input formControlName="phone"  type="tel" [class.invalid]="!myForm.controls.phone.valid && (myForm.controls.phone.dirty || submitAttempt)" clearInput></ion-input>
+                        </ion-item>
+     
+                    </ion-list>
+      
+                    <ion-list>
+                        <ion-list-header>Notification</ion-list-header>
+                        <ion-item>
+                            <ion-label>News</ion-label>
+                            <ion-toggle [disabled]="false"></ion-toggle>
+                        </ion-item>
+                    </ion-list>
+       
+                </div>
+
+
+
+                <button ion-button icon-left full color="primary" [disabled]="!myForm.valid" (click)="createAccount()">
+                    <ion-icon ios="ios-log-in" md="md-log-in"></ion-icon>
+                    회원가입
+                </button>
+            </div>
+        </form>
+</div>
+
+</ion-content>

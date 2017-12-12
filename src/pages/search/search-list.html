@@ -1,0 +1,143 @@
+﻿<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>TEST</ion-title>
+    </ion-navbar>
+
+
+
+</ion-header>
+
+<ion-content>
+
+    <!-- test -->
+
+    <div *ngFor="let item of items; let i = index">
+        <span>{{item.RAWID}}
+        </span>
+        <div *ngFor="let info of itemInfos | artlistFilter:item.RAWID">
+            <span>
+
+                {{info.USER_RAWID}}
+
+            </span>
+        </div>
+
+
+    </div>
+
+        <ion-card>
+
+            <img src="../../assets/png/dplace.png" class="img-logo" />
+
+
+            <ion-card-content>
+                <ion-card-title>
+                    디플레이스
+                </ion-card-title>
+                <div>
+                    <span class="title">발레학원</span>
+
+                </div>
+                <div>
+                    <span class="country">경기도 광주시 오포읍 신현리 799</span>
+                </div>
+
+
+
+            </ion-card-content>
+
+
+            <ion-row no-padding>
+                <ion-col col-6>
+                    <img src="../../assets/images/small.jpg" />
+                    <div>
+                        <span class="movie-title">인스텔라</span>
+                    </div>
+                    <div>
+                        <span class="country">11-29 11:00 (50분)</span>
+                    </div>
+                    <div>
+                        <span class="comment">comment</span>
+                    </div>
+
+                </ion-col>
+                <ion-col col-6>
+                    <img src="../../assets/images/boss.jpg" />
+                </ion-col>
+
+            </ion-row>
+
+            <ion-row no-padding>
+                <ion-col>
+                    <button ion-button clear small color="danger" icon-start>
+                        <ion-icon name='star'></ion-icon>
+                        aaaaa
+                    </button>
+                </ion-col>
+                <ion-col text-center>
+                    <button ion-button clear small color="danger" icon-start>
+                        <ion-icon name='musical-notes'></ion-icon>
+                        bbbb
+                    </button>
+                </ion-col>
+                <ion-col text-right>
+                    <button ion-button clear small color="danger" icon-start>
+                        <ion-icon name='share-alt'></ion-icon>
+                        ccccc
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+
+        <ion-card>
+
+            <img src="../../assets/png/cdi.jpg" class="img-logo" />
+
+
+            <ion-card-content>
+                <ion-card-title>
+                    청담어학원
+                </ion-card-title>
+                <p>
+                    경기도 광주시 오포읍 신현리 799
+                </p>
+            </ion-card-content>
+
+
+            <ion-row no-padding>
+                <ion-col col-6>
+                    <img src="../../assets/images/small.jpg" />
+
+                </ion-col>
+                <ion-col col-6>
+                    <img src="../../assets/images/boss.jpg" />
+                </ion-col>
+
+            </ion-row>
+
+            <ion-row no-padding>
+                <ion-col>
+                    <button ion-button clear small color="danger" icon-start>
+                        <ion-icon name='star'></ion-icon>
+                        aaaaa
+                    </button>
+                </ion-col>
+                <ion-col text-center>
+                    <button ion-button clear small color="danger" icon-start>
+                        <ion-icon name='musical-notes'></ion-icon>
+                        bbbb
+                    </button>
+                </ion-col>
+                <ion-col text-right>
+                    <button ion-button clear small color="danger" icon-start>
+                        <ion-icon name='share-alt'></ion-icon>
+                        ccccc
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+
+</ion-content>

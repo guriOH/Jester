@@ -1,0 +1,190 @@
+﻿<ion-header>
+    <ion-navbar >
+        <!--<button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>-->
+        <ion-title style="text-align: center">
+            {{_TITLE}}
+        </ion-title>
+
+    </ion-navbar>
+
+    <!--<ion-toolbar>
+
+
+        <ion-slides #datepicker slidesPerView="8" radio-group [ngModel]="selected" (ionChange)="onDateChange($event)">
+            <ng-container *ngFor="let item of itemsWeek; let i = index">
+                <ion-slide>
+                    <ion-item>
+                        <ion-label>
+                            <div class="dayOfWeek"><span>{{item.WEEK}}</span></div>
+                            <div class="day"><span>{{item.DAY}}</span></div>
+                        </ion-label>
+                        <ion-radio [value]="item.ID" [disabled]="false"></ion-radio>
+                    </ion-item>
+                </ion-slide>
+            </ng-container>
+
+        </ion-slides>
+
+    </ion-toolbar>-->
+
+</ion-header>
+
+
+
+
+<ion-content padding-left padding-right padding-bottom>
+
+
+<ng-container>
+
+    <div class="booking-time">
+
+        <div class="tech">
+
+            <img src="{{this.webServiceUrl}}/UPLOAD/ART/{{_IMG_ALIAS}}"/>
+
+
+        </div>
+
+        <div class="time" radio-group (ionChange)="onTimeChange($event)">
+
+            <ng-container *ngFor="let item of itemsTimeList; let i = index">
+
+
+                <ion-item>
+                    <ion-label>{{item.HH}}:{{item.MM}}</ion-label>
+                    <ion-radio [value]="i" [disabled]="false"></ion-radio>
+                </ion-item>
+
+
+            </ng-container>
+
+            공연시간 : {{this._RUNNING }}분 <br/>
+            공연비용 :   {{this._COST }}
+
+        </div>
+
+        <!--<div class="time" [ngClass]="{'center': itemsTimeList?.length <= 5}" radio-group (ionChange)="onTimeChange($event)">
+
+            <ng-container *ngFor="let item of itemsTimeList; let i = index">
+
+
+                <ion-item>
+                    <ion-label>{{item.HH}}:{{item.MM}}</ion-label>
+                    <ion-radio [value]="i" [disabled]="isAfterNow(item.PEOPLE)"></ion-radio>
+                </ion-item>
+
+
+            </ng-container>
+
+            <div *ngIf="itemsTimeList?.length % 5 == 4">
+                <ion-item style="visibility: hidden">
+                    <ion-label>00:00~</ion-label>
+                    <ion-radio [value]="00" [disabled]="false"></ion-radio>
+                </ion-item>
+
+            </div>
+
+
+        </div>-->
+    </div>
+
+</ng-container>
+
+
+    <!--<div class="movies current" *ngFor="let item of items; let i = index">
+        <div class="movie-detail" (click)="showPopupPage(item)">
+            <div class="poster">
+                <div class="content">
+                    <img src="{{this.webServiceUrl}}/UPLOAD/DONATE/{{item.IMG_ALIAS}}" />
+                </div>
+            </div>
+            <div class="item-content">
+                
+                <span class="title">{{item.ALIAS}} </span>
+                <span class="country">{{item.NAME}}</span>
+                <span class="genre ">{{item.TITLE}}</span>
+                <span class="line">
+                    <span class="date">{{convertDate(item.CREATE_DTTS)}}</span>
+                    <span class="time">{{convertMM(item.CREATE_HOUR)}}:{{convertMM(item.CREATE_MIN)}}</span>
+                </span>
+           
+                <div class="ratings">
+                    <div class="imdb">
+                        <span>후원 <span class="nb">{{item.COST}}원</span></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>-->
+
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-40>
+                <ion-icon ios="ios-quote" md="md-quote" item-left></ion-icon>
+                <ion-label>{{this._MaxPeople}}장 가능</ion-label>
+   
+            </ion-col>
+
+            <ion-col col-60>
+
+                <button ion-button color="light" icon-only (click)="countDown()" [disabled]="isValid">
+                    <ion-icon ios="ios-arrow-down" md="md-arrow-down"></ion-icon>
+                </button>
+                <button ion-button color="light">
+                    <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+                    {{_COUNT}}
+                </button>
+                <button ion-button color="light" icon-only (click)="countUp()" [disabled]="isValid">
+                    <ion-icon ios="ios-arrow-up" md="md-arrow-up"></ion-icon>
+                </button>
+            </ion-col>
+
+        </ion-row>
+
+    </ion-grid>
+
+
+
+    <div>
+
+        <img src="{{this.webServiceUrl}}/UPLOAD/WORK/{{POSTER}}"/>
+    
+    </div>
+
+
+
+
+
+</ion-content>
+
+
+
+<ion-footer>
+    <ion-toolbar padding-left padding-right>
+
+        <div class="total">
+            <div class="label">
+                TOTAL
+            </div>
+            <div class="sum">
+                <div class="cash">{{_BILL}}원</div>
+                <div class="bonus">{{_COUNT}}명</div>
+            </div>
+        </div>
+
+        <button ion-button color="secondary" (click)="pay()" icon-left large large [disabled]="isValid">
+            <ion-icon name="card"></ion-icon>
+            예약하기
+
+        </button>
+
+
+    </ion-toolbar>
+</ion-footer>
+

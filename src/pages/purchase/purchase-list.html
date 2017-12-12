@@ -1,0 +1,91 @@
+<ion-header>
+        <ion-navbar>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>구매목록</ion-title>
+        </ion-navbar>
+    
+        <ion-toolbar>
+            <ion-segment [(ngModel)]="categoryMenu" color="light">
+                <ion-segment-button (click)="changeItemMenus('A')" color="secondary" value="A">
+                    진행/목록
+                </ion-segment-button>
+                <ion-segment-button (click)="changeItemMenus('B')" color="secondary" value="B">
+                    완료/목록
+                </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+</ion-header>
+    
+    <ion-content>
+            <timeline endIcon="calendar">
+                    
+                     <timeline-item *ngFor="let item of items">
+                    <div *ngIf="item.show"class="item-summary">
+                        <div class="item_info">
+                          <timeline-time [time]="item.time"></timeline-time>
+                       </div>
+                    
+                     <ion-icon [name]="selectIcon(item.icon)"></ion-icon>
+                     <div class="item-content">
+                        <ion-card>
+                                <img src="http://img.youtube.com/vi/{{item.image}}/0.jpg"/>
+                             <ion-card-header>
+                                <span class="title">{{item.title}}</span>
+                            </ion-card-header>
+                            <ion-card-content>
+                                <span class="people">금액 : {{item.cost}}</span><br>
+                                <span class="people">카테고리 : {{item.category}}</span><br>
+                                <span class="people">구매일자 : {{item.c_dtts}}</span><br>
+                                <span class="people">좌석번호 : {{item.sits}} </span><br>
+                                <span class="people">구매 인원 : {{item.people}} 명</span>
+                            </ion-card-content>
+                           </ion-card>
+                     </div>     
+                    </div>
+                    </timeline-item>
+                
+                </timeline>
+        <!-- <ion-card *ngFor="let item of items; let i = index">
+                <div *ngIf="item.show" class="item-summary">
+                <div class="poster">
+                        <div class="content">
+                                <img src="{{this.webServiceUrl}}/UPLOAD/ART/{{item.image}}" />
+                        </div>
+                    </div>
+               
+                    <div class="item-content" >
+                         <ion-card-content>
+                            <span class="title">{{item.title}}</span>
+                        </ion-card-content>
+                        <ion-card-content>
+                            <span class="people">공연일자 : {{item.q_dtts}}</span>
+                        </ion-card-content>
+                        <ion-card-content>
+                                <span class="people">구매일자 : {{item.c_dtts}}</span>
+                            </ion-card-content>
+                        <ion-card-content>
+                            <span class="people">구매인원 : {{item.people}} 명</span>
+                        </ion-card-content>
+                        <ion-card-content>
+                            <span class="people">좌석번호 : {{item.sits}} </span>
+                        </ion-card-content>
+                        <ion-card-content>
+                            <span class="people">상영시간 : {{item.running}} 분</span>
+                        </ion-card-content>
+                        <ion-card-content>
+                            <span class="people">카테고리 : {{item.category}}</span>
+                        </ion-card-content>
+                        <ion-card-content>
+                                <span class="people">금액 : {{item.cost}}</span>
+                        </ion-card-content>
+                       </div>
+                       </div>
+        </ion-card> -->
+      
+    </ion-content>
+   
+
+
+     

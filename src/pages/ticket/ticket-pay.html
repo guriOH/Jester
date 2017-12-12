@@ -1,0 +1,201 @@
+﻿<ion-header>
+    <ion-navbar>
+
+        <ion-title>
+            {{TITLE}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <ion-icon ios="ios-close" md="md-close" style="zoom:2.0;"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <div class="content">
+
+        <div class="time-content keyvalue-row">
+            <div class="date keyvalue">
+
+                <div class="label">DATE</div>
+                <div class="value">
+                    <div><span>{{DATE}}</span></div>
+                    <div>
+                        <span>{{WEEK}}</span>
+                        <span>{{TICKET_PER}}원</span>
+                    </div>
+                </div>
+            </div>
+            <div class="time keyvalue">
+                <div class="label">TIME</div>
+                <div>
+                    <span style="color: blue">1부 {{HH_1}}:{{MM_1}}</span> <br/>
+                    <span style="color: crimson">2부 {{HH_2}}:{{MM_2}}</span>
+     
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-time"></div>
+            <!-- 공연가격 -->
+
+            <div class="time-content keyvalue-row">
+                <div class="date keyvalue">
+
+                    <div class="label">TICKET</div>
+                    <div>
+                        <button ion-button round small icon-only color="light" (click)="upTButtonClick()">
+                            <ion-icon ios="ios-add" md="md-add"></ion-icon>
+                        </button>
+
+
+                        <span style="color: blue">{{TICKET}}명</span>
+
+
+
+
+                        <button ion-button round small icon-only color="light" (click)="downTButtonClick()">
+                            <ion-icon ios="ios-remove" md="md-remove"></ion-icon>
+                        </button>
+                        <div>
+
+                            <span>{{TICKET_COST}}원</span>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="time keyvalue">
+                    <div class="label">FOOD</div>
+                    <div>
+                        <button ion-button round small icon-only color="light" (click)="upFButtonClick()">
+                            <ion-icon ios="ios-add" md="md-add"></ion-icon>
+                        </button>
+
+
+                        <span style="color:red">{{FOOD}}개</span>
+
+
+
+
+                        <button ion-button round small icon-only color="light" (click)="downFButtonClick()">
+                            <ion-icon ios="ios-remove" md="md-remove"></ion-icon>
+                        </button>
+
+                        <div>
+
+                            <span>{{FOOD_COST}}원</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="booking-time"></div>
+
+
+
+
+
+
+
+
+            <!-- 공연정보 -->
+
+
+
+
+
+
+            <ion-card>
+
+
+
+                <ion-row no-padding>
+                    <ion-col col-6 *ngFor="let info of items">
+                        <img src="{{this.webServiceUrl}}/UPLOAD/ART/{{info.IMG_ALIAS}}" />
+                        <div>
+                            <span class="movie-title">{{info.TITLE}}</span>
+                        </div>
+                        <div>
+                            <span class="country">{{info.OPEN_DTTS | timetoDataConvert}} {{info.HH}}:{{info.MM}} ({{info.RUNNING}}분)</span>
+                        </div>
+
+                        <div>
+                            <span class="comment">대상 {{info.F_AGE}}세~{{info.T_AGE}}세</span>
+                        </div>
+                    </ion-col>
+
+
+                </ion-row>
+
+                <ion-row no-padding>
+                    <ion-col>
+                        <button ion-button clear small color="danger" icon-start>
+                            <ion-icon name='star'></ion-icon>
+                            1부와 2부를 {{SUM_COST}}원으로 모두 관람할 수 있습니다 
+                        </button>
+                    </ion-col>
+     
+                </ion-row>
+            </ion-card>
+
+
+
+            <!-- /공연 정보 -->
+            <!-- food -->
+
+            <ion-card *ngFor="let item of itemsFood">
+
+                <img src="{{this.webServiceUrl}}/UPLOAD/FOOD/{{item.POSTER}}" />
+                <ion-card-content>
+                    <ion-card-title>
+                        {{item.ALIAS}}
+                    </ion-card-title>
+                    <div>
+                        <span class="title">{{item.TITLE}}</span>
+
+                    </div>
+
+
+                </ion-card-content>
+
+
+                <ion-row no-padding>
+                    <ion-col>
+                        <button ion-button clear small color="danger" icon-start>
+                            <ion-icon name='star'></ion-icon>
+                            {{item.COST}}원
+                        </button>
+                    </ion-col>
+
+                    <ion-col text-right>
+                        <button ion-button clear small color="danger" icon-start>
+                            <ion-icon name='share-alt'></ion-icon>
+                            예약하기
+                        </button>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+
+
+
+        </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar padding-left padding-right>
+        <div class="total">
+            <div class="label">{{ TOTAL}}원
+            </div>
+            <div class="sum">
+                <div class="cash">TICKET : {{TICKET}}명</div>
+                <div class="bonus">FOOD : {{FOOD}}개</div>
+            </div>
+        </div>
+        <button class="pay" ion-button color="secondary" (click)="confirmPay()" icon-left [disabled]="false">
+            <ion-icon name="card"></ion-icon>
+            결제하기
+        </button>
+    </ion-toolbar>
+</ion-footer>

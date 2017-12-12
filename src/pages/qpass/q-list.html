@@ -1,0 +1,135 @@
+﻿<ion-header>
+    <ion-navbar>
+
+        <ion-title>
+            {{ALIAS}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <ion-icon ios="ios-close" md="md-close" style="zoom:2.0;"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <div class="content">
+        <!--<div class="movie-content">
+            <div class="title"><span>{{ALIAS}}</span></div>
+        </div>-->
+        <div class="time-content keyvalue-row">
+            <div class="date keyvalue">
+
+                <div class="label">DATE</div>
+                <div class="value">
+                    <div><span>{{DATE}}</span></div>
+                    <div>
+                        <span>{{WEEK}}</span>
+                        <span style="color:crimson">{{COST}}원</span>
+                    </div>
+                </div>
+            </div>
+            <div class="time keyvalue">
+                <div class="label">TIME</div>
+                <div class="value">
+                    <span>{{CREATE_HOUR}}:{{CREATE_MIN}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="location-content">
+            <div class="keyvalue">
+                <div>ADDRESS</div>
+                <div class="cinema">
+                    <div class="name">연락처 : {{PHONE_CODE}}</div>
+                    <address>{{ADDRESS}}4</address>
+                </div>
+            </div>
+        </div>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+
+                    <!-- 후원 -->
+                    <ion-card>
+                        <img src="{{this.webServiceUrl}}/UPLOAD/DONATE/{{IMG_ALIAS}}"/>
+                        <ion-card-content>
+                            <ion-card-title>
+                                {{NAME}}
+                            </ion-card-title>
+                            <div class="item-content">
+                                <span class="title">{{TITLE}}</span>
+                                
+                                <!--<div>
+                                    <span class="line">
+                                        <span class="date">{{CREATE_DTTS}}</span>
+                                        <span class="nb">{{CREATE_HOUR}}:{{CREATE_MIN}}</span>
+                                    </span>
+
+                                </div>-->
+
+                                <!-- services rating -->
+                                <div class="ratings">
+                                    <div class="imdb">
+
+                                        <!--목표: {{MONEY}}원--> <ion-badge><span>후원 <span class="nb">{{COST}}원</span></span></ion-badge>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+
+             
+
+                </ion-col>
+                <ion-col>
+                    <div class="seats-content" *ngFor="let item of items; let i = index">
+                        <div class="seat-container keyvalue-row" (click)="changeTime(item)">
+
+                            <div *ngIf="item.USE_YN=='N'" class="seat keyvalue">
+                                <span>TIME</span>
+                                <span>{{convertMM(item.CREATE_HOUR)}}:{{convertMM(item.CREATE_MIN)}}</span>
+                            </div>
+
+
+                            <div *ngIf="item.USE_YN!='N'" class="row keyvalue">
+                                <span>TIME</span>
+                                <span>{{convertMM(item.CREATE_HOUR)}}:{{convertMM(item.CREATE_MIN)}}</span>
+                            </div>
+
+                            <div class="price keyvalue">
+                                <span>Price</span>
+                                <span *ngIf="item.USE_YN=='N'">{{item.COST}}원</span>
+                                <span *ngIf="item.USE_YN!='N'">예약완료</span>
+                            </div>
+
+                            <!--<div class="isUseYn(item.USE_YN)">
+                                <span>TIME</span>
+                                <span>{{convertMM(item.CREATE_HOUR)}}:{{convertMM(item.CREATE_MIN)}}</span>
+                            </div>-->
+                      
+                        </div>
+
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar padding-left padding-right>
+        <div class="total">
+            <div class="label">
+                {{DATE}} {{CREATE_HOUR}}:{{CREATE_MIN}}
+            </div>
+            <div class="sum">
+                <div class="cash">{{COST}}원</div>
+                <div class="bonus">병원에서 직접 후원</div>
+            </div>
+        </div>
+        <button class="pay" ion-button color="secondary" (click)="pay()" icon-left large [disabled]="false">
+            <ion-icon name="card"></ion-icon>
+            예약하기
+        </button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,85 @@
+﻿<ion-header no-border>
+    <ion-navbar>
+
+      
+    </ion-navbar>
+</ion-header>
+<ion-content fullscreen="true">
+
+  
+
+ 
+
+    <div class="youtube-embed-wrapper" style="position: relative; padding-bottom: 56.25%; padding-top: 5px; height: 0; overflow: hidden;">
+        <iframe allowfullscreen='' frameborder='0' height='360' [src]='youtubeUrl | youtube' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='640'></iframe>
+    </div>
+
+
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="{{this.webServiceUrl}}/UPLOAD/PERSON/{{USER_IMG}}" />
+            </ion-avatar>
+            <h2>{{USER_ALIAS}}</h2>
+            <h3>{{ALIAS}}</h3>
+            <p>{{MAKE_DTTS}}</p>
+        </ion-item>
+
+
+    </ion-list>
+
+
+    <div>
+
+        <img src="{{this.webServiceUrl}}/UPLOAD/WORK/{{POSTER}}" />
+
+        <!--<div class="movie-summary">
+
+            <div class="item-content">
+                <span class="title">title</span>
+                <span class="country">country}</span>
+                <span class="genre ">genre</span>
+                <span class="line">
+                        <span class="date">2017-11-22</span>
+                        <span class="time">10:20</span>
+                    </span>
+
+
+                <div class="ratings">
+                    <div class="imdb">
+                        <span>imdb <span class="nb">rate</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="movie-more">
+            <span><span class="key">Director: </span>Director</span>
+            <span><span class="key">Cast: </span>Cast</span>
+            <span class="description">AAAAAA</span>
+        </div>-->
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <!--<button ion-button color="primary" (click)="goToAuction()">Buy Ticket</button>-->
+       
+
+        <ion-item>
+   
+
+            <button class="pay" item-start ion-button color="secondary" (click)="pay()" icon-left large [disabled]="false">
+                <ion-icon name="card"></ion-icon>
+                공연예약
+            </button>
+
+
+            <button class="pay" item-end ion-button color="danger" (click)="dismiss()" icon-left large [disabled]="false">
+                <ion-icon ios="ios-close" md="md-close"></ion-icon>
+            </button>
+
+
+
+        </ion-item>
+
+    </ion-toolbar>
+</ion-footer>

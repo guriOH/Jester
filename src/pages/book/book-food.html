@@ -1,0 +1,53 @@
+﻿<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center">
+            SOSOKSA
+        </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content no-padding>
+
+
+
+
+
+    <ion-card *ngFor="let item of items">
+
+        <img src="{{this.webServiceUrl}}/UPLOAD/FOOD/{{item.POSTER}}" />
+        <ion-card-content>
+            <ion-card-title>
+                {{item.ALIAS}}
+            </ion-card-title>
+            <div>
+                <span class="title">{{item.TITLE}}</span>
+
+            </div>
+
+
+        </ion-card-content>
+
+
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="danger" icon-start>
+                    <ion-icon name='star'></ion-icon>
+                    {{item.COST}}원
+                </button>
+            </ion-col>
+
+            <ion-col text-right>
+                <button ion-button clear small color="danger" icon-start (click)="confirmPay(item.RAWID)">
+                    <ion-icon name='share-alt'></ion-icon>
+                    예약하기
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+
+</ion-content>

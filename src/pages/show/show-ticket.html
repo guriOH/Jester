@@ -1,0 +1,112 @@
+﻿<ion-header>
+    <ion-navbar>
+
+        <ion-title>
+           TICKET
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <ion-icon ios="ios-close" md="md-close" style="zoom:2.0;"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <ng-container>
+        <div class="ticket-content">
+
+
+            <!-- -->
+            <ion-list>
+                <ion-item-sliding>
+                    <ion-item>
+                        <div class="movie-content">
+                            <div class="movie-summary">
+                                <div class="poster">
+                                    <div class="content">
+                                        <img src="{{this.webServiceUrl}}/UPLOAD/ART/{{IMG_ALIAS}}" />
+                                    </div>
+                                </div>
+                                <div class="item-content">
+                                    <span class="title">{{TITLE}}</span>
+                                    <span class="tech">{{ALIAS}}</span>
+
+                                    <span class="line">
+                                        <span class="time">{{Q_DTTS}} {{HH}}:{{MM}}</span>
+                                    </span>
+                                    <span class="genre">{{RUNNING}}분</span>
+
+                                    <span class="country">{{F_AGE}}세 ~ {{T_AGE}}세</span>
+
+                                    <span class="genre">PHONE : {{PHONE_NUMBER}}</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </ion-item>
+                    <ion-item-options side="right">
+                        <button ion-button color="secondary" (click)="callPrompt('01042451428')">
+                            <ion-icon ios="ios-call" md="md-call"></ion-icon>
+                            call
+                        </button>
+                    </ion-item-options>
+
+                </ion-item-sliding>
+
+            </ion-list>
+                <!--  -->
+                <div class="location-content">
+                    <ion-icon name="pin"></ion-icon>
+                    <div class="cinema">
+                        <div class="name">{{LOCATION_ALIAS}} </div>
+                        <address>{{LOCATION_ID}}</address>
+                    </div>
+                </div>
+                <div class="seats-content">
+                    <ion-slides pager="true">
+                        <ion-slide class="seat-container">
+                            <div class="seat-info seat-info-main">
+                                <div class="screen">
+                                    <span>DATE</span>
+                                    <span>{{Q_DTTS}}</span>
+                                </div>
+                                <div class="row">
+                                    <span>TIME</span>
+                                    <span>{{HH}}:{{MM}}</span>
+                                </div>
+                                <div class="seat">
+                                    <span>WEEK</span>
+                                    <span>{{WEEK}}</span>
+                                </div>
+                            </div>
+                            <div class="seat-info seat-info-other">
+                                <div class="price">
+                                    <span>PRICE</span>
+                                    <span>{{COST}}</span>
+                                </div>
+                                <div class="week">
+                                    <span>SEAT</span>
+                                    <span>{{SEAT}}</span>
+                                </div>
+                                <div class="time">
+                                    <span>PEOPLE</span>
+                                    <span>{{PEOPLE}}명</span>
+                                </div>
+                            </div>
+                            <div class="seat-barcode">
+                                <img src="../../assets/png/barcode.png" />
+                                <!--<barcode [data]="11111" format="EAN13" width="2"></barcode>-->
+                            </div>
+                        </ion-slide>
+
+
+                    </ion-slides>
+
+</div>
+</div>
+    </ng-container>
+</ion-content>
+<ion-footer>
+
+</ion-footer>

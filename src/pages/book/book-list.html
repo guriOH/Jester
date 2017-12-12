@@ -1,0 +1,122 @@
+﻿<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center">
+            {{userLocation}}
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="showAddressSearch()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+
+
+
+    </ion-navbar>
+
+
+    <ion-toolbar>
+
+        <ion-slides #datepicker slidesPerView="8" radio-group [ngModel]="selected" (ionChange)="onDateChange($event)">
+            <ng-container *ngFor="let item of itemsWeek; let i = index">
+                <ion-slide>
+                    <ion-item>
+                        <ion-label>
+                            <div class="dayOfWeek"><span>{{item.WEEK}}</span></div>
+                            <div class="day"><span>{{item.DAY}}</span></div>
+                        </ion-label>
+                        <ion-radio [value]="item.ID" [disabled]="false"></ion-radio>
+                    </ion-item>
+                </ion-slide>
+            </ng-container>
+        </ion-slides>
+
+    </ion-toolbar>
+
+
+
+</ion-header>
+<ion-content no-padding>
+   <div class="ticket-list">
+
+        <div class="ticket-item">
+
+
+
+            <ion-card *ngFor="let item of items">
+
+
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="{{this.webServiceUrl}}/UPLOAD/USER/{{item.USER_IMG}}" />
+                    </ion-avatar>
+                    <h2>{{item.ALIAS}}</h2>
+                    <p>{{item.PHONE_NUMBER}} ({{item.LOCATION}})</p>
+                </ion-item>
+
+
+
+
+                <!--<ion-card-content>
+                    <ion-card-title>
+                        {{item.ALIAS}}
+                    </ion-card-title>
+                    <div>
+                        <span class="title">{{item.LOCATION}}</span>
+
+                    </div>
+
+
+                </ion-card-content>-->
+
+
+                <ion-row no-padding>
+                    <ion-col col-6 *ngFor="let info of itemsInfo | artlistOpenFilter:item.USER_RAWID">
+                        <img src="{{this.webServiceUrl}}/UPLOAD/ART/{{info.IMG_ALIAS}}" />
+                        <div>
+                            <span class="movie-title">{{info.TITLE}}</span>
+                        </div>
+                        <div>
+                            <span class="country">{{info.OPEN_DTTS | timetoDataConvert}} ({{info.RUNNING}}분)</span>
+                        </div>
+                        <div>
+                            <span class="comment">{{info.COST}}원 {{info.CATEGORY_CD}}</span>
+                        </div>
+                        <div>
+                            <span class="comment">대상 {{info.F_AGE}}세~{{info.T_AGE}}세</span>
+                        </div>
+                    </ion-col>
+    
+
+                </ion-row>
+
+                <ion-row no-padding>
+                    <ion-col>
+                        <button ion-button clear small color="danger" icon-start>
+                            <ion-icon name='star'></ion-icon>
+                            aaaaa
+                        </button>
+                    </ion-col>
+                    <ion-col text-center>
+                        <button ion-button clear small color="danger" icon-start>
+                            <ion-icon name='musical-notes'></ion-icon>
+                            bbbb
+                        </button>
+                    </ion-col>
+                    <ion-col text-right>
+                        <button ion-button clear small color="danger" icon-start (click)="onSelect(item)">
+                            <ion-icon name='share-alt'></ion-icon>
+                            예약하기
+                        </button>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+
+
+
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,126 @@
+﻿<ion-header>
+    <ion-navbar>
+
+        <ion-title>
+           TICKET
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <ion-icon ios="ios-close" md="md-close" style="zoom:2.0;"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+<ion-content no-padding>
+    <ng-container>
+        <div class="ticket-content">
+            <!-- Info -->
+            <ion-card >
+                <ion-item>
+                        <ion-thumbnail item-start>
+                            <img src="{{this.webServiceUrl}}/UPLOAD/MAIN/{{MEMBER_IMG}}" />
+                        </ion-thumbnail>
+                        <h2>{{MEMBER_ALIAS}}</h2>
+                    <h3>{{ADDRESS}}</h3>
+                    <p>예약번호-<span style="color:blue">{{BOOK_RAWID}}</span></p>
+                    <button ion-button clear item-end (click)="showModalPage()">위치보기</button>
+                    </ion-item>
+
+
+
+            </ion-card>
+
+
+            <!-- Ticket  -->
+
+            <div class="seats-content">
+                <ion-slides pager="true" padding>
+                    <ion-slide class="seat-container" *ngFor="let item of itemsA; let i = index">
+                        <div class="seat-info seat-info-main">
+                            <div class="screen">
+                                <span>DATE</span>
+                                <span>{{item.OPEN_DTTS | timetoDataConvert}}</span>
+                            </div>
+                            <div class="row">
+                                <span>TIME</span>
+                                <span>{{item.HH}}:{{item.MM}}</span>
+                            </div>
+                            <div class="seat">
+                                <span>SHOW</span>
+                                <span>{{i+1}}부</span>
+                            </div>
+                        </div>
+                        <div class="seat-info seat-info-other">
+                            <div class="price">
+                                <span>TICKET</span>
+                                <span>{{item.USER_COST}}원</span>
+                            </div>
+                            <div class="week">
+                                <span>PEOPLE</span>
+                                <span>{{item.TICKET}}명</span>
+                            </div>
+                            <div class="time">
+                                <span>PRICE</span>
+                                <span>{{item.TICKET_COST}}원</span>
+                            </div>
+                        </div>
+                        <div class="seat-barcode">
+                            <img src="../../assets/png/barcode.png"/>
+                            <!--<barcode [data]="11111" format="EAN13" width="2"></barcode>-->
+                        </div>
+                    </ion-slide>
+
+
+                </ion-slides>
+
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- food -->
+
+    <ion-card *ngFor="let item of itemsB">
+
+        <img src="{{this.webServiceUrl}}/UPLOAD/FOOD/{{item.POSTER}}" />
+        <ion-card-content>
+            <ion-card-title>
+                {{item.ALIAS}}
+            </ion-card-title>
+            <div>
+                <span class="title">{{item.TITLE}}</span>
+
+            </div>
+
+
+        </ion-card-content>
+
+
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small icon-start>
+                    <ion-icon name='star'></ion-icon>
+                    {{item.COST}}원
+                </button>
+            </ion-col>
+            <ion-col text-center>
+                <button ion-button clear small icon-start>
+                    <ion-icon name='musical-notes'></ion-icon>
+                    {{item.FOOD}}개
+                </button>
+            </ion-col>
+            <ion-col text-right>
+                <button ion-button clear small icon-start (click)="onSelect(item)">
+                    <ion-icon name='share-alt'></ion-icon>
+                    {{item.FOOD_COST}}원
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+
+
+</ion-content>
+<ion-footer>
+
+</ion-footer>

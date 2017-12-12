@@ -1,0 +1,42 @@
+﻿$bg-color-t: #F9F9F9;
+$bg-color-c: #ff6a00;
+$bg-color-title: darken($bg-color-t, 3);
+$bg-color-comment: darken($bg-color-c, 3);
+page-search-list {
+
+       .toolbar-background{ background:#F9F9F9; border-style:none;}
+
+       .img-logo{
+  height: 20vh;
+  width: auto;
+  margin: auto;
+  display: block;
+}
+
+         .subtitle {
+                    margin-top: .4em;
+
+                    width: 100%;
+                    line-height: 80%;
+                    background-color: $bg-color-title;
+                }
+         
+         .comment {
+                    margin-top: .4em;
+
+                    width: 100%;
+                    line-height: 80%;
+                    background-color: $bg-color-comment;
+                }
+
+                .country {
+                    width: 60%;
+                    line-height: 80%;
+                  // background-color: $bg-color-loading;
+                }
+
+                 .movie-title {
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+}

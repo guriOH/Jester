@@ -1,0 +1,120 @@
+﻿<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center">
+            {{userLocation}}
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="showAddressSearch()">
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+
+
+
+    </ion-navbar>
+
+
+    <ion-toolbar>
+
+        <ion-slides #datepicker slidesPerView="8" radio-group [ngModel]="selected" (ionChange)="onDateChange($event)">
+            <ng-container *ngFor="let item of itemsWeek; let i = index">
+                <ion-slide>
+                    <ion-item>
+                        <ion-label>
+                            <div class="dayOfWeek"><span>{{item.WEEK}}</span></div>
+                            <div class="day"><span>{{item.DAY}}</span></div>
+                        </ion-label>
+                        <ion-radio [value]="item.ID" [disabled]="false"></ion-radio>
+                    </ion-item>
+                </ion-slide>
+            </ng-container>
+        </ion-slides>
+
+    </ion-toolbar>
+
+
+
+</ion-header>
+<ion-content padding>
+   <div class="ticket-list">
+
+        <div class="ticket-item" *ngFor="let item of items" tappable (tap)="onSelect(item)">
+            <div class="movie-content">
+                <div class="movie-summary">
+                    <div class="poster">
+                        <div class="content">
+
+                            <img src="{{this.webServiceUrl}}/UPLOAD/ART/{{item.IMG_ALIAS}}"/>
+                        </div>
+                    </div>
+
+
+                    <div class="item-content">
+                        <span class="title">{{item.TITLE}}</span>
+                        <span class="country">{{item.LOCATION_ID}}</span>
+                        <span class="genre ">{{item.F_AGE}}세~{{item.T_AGE}}세</span>
+                        <span class="line">
+                            <span class="date">DATE</span>
+                            <span class="time">{{convertDate(item.Q_DTTS)}}</span>
+     
+                        </span>
+                        <span class="line">
+                            <span class="date">TIME</span>
+                            <span class="time">{{item.TIME_LIST}}</span>
+                        </span>
+                        <span class="line">
+                            <span class="date">COST</span>
+                            <span class="time">{{item.COST}}원</span>
+                        </span>
+                        <span class="line">
+                            <span class="date">인원</span>
+                            <span class="time">{{item.PEOPLE}}명</span>
+                        </span>
+                        <!-- services rating -->
+                        <div class="ratings">
+                            <div class="imdb">
+                                <span>RATE <span class="nb">9.7</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--<div class="item-content">
+                        <span class="title">{{item.TITLE}}</span>
+                        <div class="tech-content keyvalue-row">
+                            <div class="keyvalue">
+                         
+                                <div>ffffff</div>
+                            </div>
+                         
+                        </div>
+
+                        <span class="keyvalue">{{item.TITLE}}</span>
+                        <div class="time-content keyvalue-row">
+                            <div class="keyvalue">
+                                <div>START</div>
+                                <div>{{convertDate(item.Q_DTTS)}}</div>
+                            </div>
+                            <div class="keyvalue">
+                                <div>TARGET</div>
+                                <div>{{item.COST}}</div>
+                            </div>
+                        </div>
+
+                        <ion-item>
+                            <ion-range min="0" max="item.TARGET" step="100000" snaps="true" [(ngModel)]="item.RAWID" color="danger">
+
+                            </ion-range>
+                        </ion-item>
+
+
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

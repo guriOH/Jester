@@ -1,0 +1,98 @@
+﻿<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center">
+            Login
+        </ion-title>
+
+    </ion-navbar>
+</ion-header>
+<ion-content class="background" padding no-bounce >
+
+    <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+    <form [formGroup]="myForm">
+
+        <!--<div class="company">
+            <img src="assets/images/logo.png" class="img-center"/>
+
+        </div>-->
+
+
+
+        <ion-card>
+            <ion-card-header>
+                SOSOKSA.com
+            </ion-card-header>
+            <ion-card-content>
+                <ion-list no-line>
+                    <ion-item>
+                        <ion-input formControlName="email" type="text" [class.invalid]="!myForm.controls.email.valid && (myForm.controls.email.dirty || submitAttempt)" clearInput></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input type="password" formControlName="password" [class.invalid]="!myForm.controls.password.valid && (myForm.controls.password.dirty || submitAttempt)"></ion-input>
+                    </ion-item>
+                    <a>Forgot your login detail? <b>Get help signing in</b></a>
+                    <button ion-button block outline color="light" (click)="login()">Log in</button>
+                    <p>OR</p>
+                    <button ion-button block color="facebook" (click)="register()">
+                        <ion-icon name="ion-ios-personadd"></ion-icon> New Account
+                    </button>
+                    <button ion-button block outline color="light" (click)="loginAuto()">Auto</button>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+
+
+
+        <!--<ion-list>
+            <ion-item>
+                <ion-label floating>이메일</ion-label>
+                <ion-input formControlName="email" type="text" [class.invalid]="!myForm.controls.email.valid && (myForm.controls.email.dirty || submitAttempt)" clearInput></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label floating>비밀번호</ion-label>
+                <ion-input type="password" formControlName="password" [class.invalid]="!myForm.controls.password.valid && (myForm.controls.password.dirty || submitAttempt)" ></ion-input>
+            </ion-item>
+
+
+        </ion-list>
+        <button ion-button full color="primary" (click)="login()">로그인</button>-->
+     
+
+    </form>
+
+
+    <!--<div class="content">
+
+        <div class="company">
+            <img src="assets/images/logo.png" class="img-center"/>
+
+        </div>
+        <div class="login-form">
+            <ion-list>
+                <ion-item>
+                    <ion-input type="email" placeholder="이메일" clearInput></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="password" placeholder="비밀번호" clearInput></ion-input>
+                </ion-item>
+            </ion-list>
+            <button ion-button block color="primary" (click)="login()">
+                <span>로그인</span>
+            </button>
+
+        </div>
+
+
+    </div>-->
+</ion-content>
+<!--<ion-footer no-border>
+    <div class="login-signup">
+        <span class="text">Don't have an account?</span>
+        <button ion-button clear color="primary" (click)="register()">회원가입</button>
+    </div>
+</ion-footer>-->

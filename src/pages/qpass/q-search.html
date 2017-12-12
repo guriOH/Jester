@@ -1,0 +1,176 @@
+﻿<ion-header>
+    <ion-navbar >
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center">
+            병원찾기-{{filtering}}km
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="openPopover()">
+                <ion-icon ios="ios-pin" md="md-pin" class="menu-icon"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+    <ion-toolbar>
+        <ion-item (click)="showAddressSearch()">
+            <ion-icon ios="ios-navigate" md="md-navigate" item-start style="font-size: .8em">{{userLocation.location}}</ion-icon>
+
+            <ion-badge item-right>출발</ion-badge>
+
+        </ion-item>
+
+        <ion-slides #datepicker slidesPerView="8" radio-group [ngModel]="selected" (ionChange)="onDateChange($event)">
+            <ng-container *ngFor="let item of itemsWeek; let i = index">
+                <ion-slide>
+                    <ion-item>
+                        <ion-label>
+                            <div class="dayOfWeek"><span>{{item.WEEK}}</span></div>
+                            <div class="day"><span>{{item.DAY}}</span></div>
+                        </ion-label>
+                        <ion-radio [value]="item.ID" [disabled]="false"></ion-radio>
+                    </ion-item>
+                </ion-slide>
+            </ng-container>
+
+        </ion-slides>
+
+    </ion-toolbar>
+
+</ion-header>
+
+
+
+
+<ion-content padding-left padding-right padding-bottom>
+
+
+
+<ng-container>
+    <!--<ion-content [innerHTML]="theHtmlString">
+        <div class="time" radio-group></div>
+    </ion-content>-->
+
+
+    <!--<datepicker [dates]="dates" [selected]="selectedDate" (change)="onDateChange($event)"></datepicker>-->
+        <!--<datepicker [dates]="dates" [selected]="selectedDate" (change)="onDateChange($event)"></datepicker>-->
+        <!--<ion-datetime displayFormat="YYYY MM DD" [(ngModel)]="eventDate.month"></ion-datetime>-->
+        <!--<ion-datetime displayFormat="YYYY MM DD" [(ngModel)]="2017 09 08"></ion-datetime>-->
+        <div class="booking-time">
+            <div class="tech" radio-group (ionChange)="onCategoryChange($event)">
+
+
+                <ng-container *ngFor="let item of itemsCategory; let i = index">
+                    <ion-item>
+                        <ion-label>
+                            {{item.ALIAS}}
+                        </ion-label>
+                        <ion-radio [value]="item.CODE"></ion-radio>
+                    </ion-item>
+                </ng-container>
+
+
+            </div>
+
+           
+            <!--{{sanitizer.bypassSecurityTrustHtml(theHtmlString)}}-->
+            <div class="time"  [ngClass]="{'center': itemsTime?.length <= 3}" radio-group (ionChange)="onTimeChange($event)">
+
+            <ng-container  *ngFor="let item of itemsTime; let i = index">
+
+
+                <ion-item>
+                    <ion-label>{{item.CREATE_HOUR}}:00~</ion-label>
+                    <ion-radio [value]="item.CREATE_HOUR" [disabled]="isAfterNow(item.RAWID_LIST)"></ion-radio>
+                </ion-item>
+
+
+            </ng-container>
+
+            <div *ngIf="itemsTime?.length % 3 == 2">
+                <ion-item style="visibility: hidden">
+                    <ion-label>00:00~</ion-label>
+                    <ion-radio [value]="00" [disabled]="false"></ion-radio>
+                </ion-item>
+
+            </div>
+
+   
+
+
+            </div>
+        </div>
+
+
+
+
+
+</ng-container>
+
+
+<!--<div *ngFor="let item of items; let i = index">
+    <ion-card (click)="showPopupPage(item)">
+        <img src="{{this.webServiceUrl}}/UPLOAD/DONATE/{{item.IMG_ALIAS}}" />
+        <ion-card-content>
+            <ion-card-title>
+                {{item.ALIAS}}
+            </ion-card-title>
+            <div class="item-content">
+                <span class="title">{{item.TITLE}}
+                </span>
+
+            </div>
+            <ion-item>
+
+                <ion-icon ios="ios-calendar" md="md-calendar" item-left style="color: #55acee"></ion-icon>
+                {{item.CREATE_DTTS}}
+                <ion-badge item-right>{{item.CREATE_HOUR}}:{{item.CREATE_MIN}}</ion-badge>
+
+            </ion-item>
+
+
+            <ion-item>
+
+                <ion-icon ios="ios-calendar" md="md-calendar" item-left style="color: #55acee"></ion-icon>
+                목표: {{item.MONEY}}원 
+                <ion-badge item-right>후원: {{item.COST}}원</ion-badge>
+
+            </ion-item>
+
+     
+        </ion-card-content>
+    </ion-card>
+
+</div>-->
+    <div class="movies current" *ngFor="let item of items; let i = index">
+        <div class="movie-detail" (click)="showPopupPage(item)">
+            <div class="poster">
+                <div class="content">
+                    <img src="{{this.webServiceUrl}}/UPLOAD/DONATE/{{item.IMG_ALIAS}}" />
+                </div>
+            </div>
+            <div class="item-content">
+                
+                <span class="title">{{item.ALIAS}} </span>
+                <span class="country">{{item.NAME}}</span>
+                <span class="genre ">{{item.TITLE}}</span>
+                <span class="line">
+                    <span class="date">{{convertDate(item.CREATE_DTTS)}}</span>
+                    <span class="time">{{convertMM(item.CREATE_HOUR)}}:{{convertMM(item.CREATE_MIN)}}</span>
+                </span>
+                <!-- services rating -->
+                <div class="ratings">
+                    <div class="imdb">
+                        <span>후원 <span class="nb">{{item.COST}}원</span></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+      
+</ion-content>
+
+

@@ -1,0 +1,86 @@
+﻿<ion-header>
+    <ion-navbar>
+
+        <ion-title>
+           예약완료
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <ion-icon ios="ios-close" md="md-close" style="zoom:2.0;"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+    <ng-container>
+        <div class="ticket-content">
+            <div class="movie-content">
+                <div class="movie-summary">
+                    <div class="poster">
+                        <div class="content">
+                            <img src="{{this.webServiceUrl}}/UPLOAD/DONATE/{{IMG_ALIAS}}" />
+                        </div>
+                    </div>
+                    <div class="item-content">
+                        <span class="title">{{ALIAS}}</span>
+                        <span class="country">{{NAME}}</span>
+                        <span class="line">
+                            <span class="time">목표 : {{MONEY}}</span>
+                        </span>
+                        <span class="tech">후원 : {{COST}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="location-content">
+                <ion-icon name="pin"></ion-icon>
+                <div class="cinema">
+                    <div class="name">{{ADDRESS}}</div>
+                    <address>연락처 : {{PHONE_CODE}}</address>
+                </div>
+            </div>
+            <div class="seats-content">
+                <ion-slides pager="true">
+                    <ion-slide class="seat-container">
+                        <div class="seat-info seat-info-main">
+                            <div class="screen">
+                                <span>ROOM</span>
+                                <span>{{QUEUE_NO}}</span>
+                            </div>
+                            <div class="row">
+                                <span>DOCTOR</span>
+                                <span>{{QUEUE_COMMENT}}</span>
+                            </div>
+                            <div class="seat">
+                                <span>DATE</span>
+                                <span>{{DATE}}</span>
+                            </div>
+                        </div>
+                        <div class="seat-info seat-info-other">
+                            <div class="price">
+                                <span>price</span>
+                                <span>{{COST}}</span>
+                            </div>
+                            <div class="week">
+                                <span>date</span>
+                                <span>{{WEEK}}</span>
+                            </div>
+                            <div class="time">
+                                <span>time</span>
+                                <span>{{convertMM(CREATE_HOUR)}}:{{convertMM(CREATE_MIN)}}</span>
+                            </div>
+                        </div>
+                        <div class="seat-barcode">
+                            <!--<barcode [data]="11111" format="EAN13" width="2"></barcode>-->
+                        </div>
+                    </ion-slide>
+
+
+                </ion-slides>
+            </div>
+        </div>
+    </ng-container>
+</ion-content>
+<ion-footer>
+
+</ion-footer>

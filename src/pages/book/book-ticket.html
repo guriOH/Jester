@@ -1,0 +1,138 @@
+﻿<ion-header>
+    <ion-navbar>
+
+        <ion-title>
+           TICKET
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+                <ion-icon ios="ios-close" md="md-close" style="zoom:2.0;"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+<ion-content no-padding>
+    <ng-container>
+        <div class="ticket-content">
+            <!-- Info -->
+            <ion-card >
+                <ion-item>
+                        <ion-avatar item-start>
+                            <img src="{{this.webServiceUrl}}/UPLOAD/USER/{{USER_IMG}}" />
+                        </ion-avatar>
+                        <h2>{{ALIAS}}</h2>
+                        <p>{{PHONE_NUMBER}}</p>
+                    </ion-item>
+
+
+                    <ion-row no-padding>
+                        <ion-col col-6 *ngFor="let info of itemsA; let i = index">
+                            <img src="{{this.webServiceUrl}}/UPLOAD/ART/{{info.IMG_ALIAS}}" />
+                            <div>
+                                <span class="movie-title">{{info.TITLE}}</span>
+                            </div>
+                            <div>
+                                <span class="country">{{info.OPEN_DTTS | timetoDataConvert}} ({{info.RUNNING}}분)</span>
+                            </div>
+                            <div>
+                                <span class="comment">{{info.CATEGORY_CD}}</span>
+                            </div>
+                            <div>
+                                <span class="comment">대상 {{info.F_AGE}}세~{{info.T_AGE}}세</span>
+                            </div>
+                        </ion-col>
+
+
+                    </ion-row>
+
+            </ion-card>
+
+
+            <!-- Ticket  -->
+
+            <div class="seats-content">
+                <ion-slides pager="true" padding>
+                    <ion-slide class="seat-container" *ngFor="let item of itemsA; let i = index">
+                        <div class="seat-info seat-info-main">
+                            <div class="screen">
+                                <span>DATE</span>
+                                <span>{{item.OPEN_DTTS | timetoDataConvert}}</span>
+                            </div>
+                            <div class="row">
+                                <span>TIME</span>
+                                <span>{{item.HH}}:{{item.MM}}</span>
+                            </div>
+                            <div class="seat">
+                                <span>SHOW</span>
+                                <span>{{item.SEQ}}부</span>
+                            </div>
+                        </div>
+                        <div class="seat-info seat-info-other">
+                            <div class="price">
+                                <span>TICKET</span>
+                                <span>{{item.USER_COST}}원</span>
+                            </div>
+                            <div class="week">
+                                <span>PRICE</span>
+                                <span>{{item.COST}}원</span>
+                            </div>
+                            <div class="time">
+                                <span>PEOPLE</span>
+                                <span>{{item.PEOPLE}}명</span>
+                            </div>
+                        </div>
+                        <div class="seat-barcode">
+                            <img src="../../assets/png/barcode.png"/>
+                            <!--<barcode [data]="11111" format="EAN13" width="2"></barcode>-->
+                        </div>
+                    </ion-slide>
+
+
+                </ion-slides>
+
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- food -->
+
+    <ion-card *ngFor="let item of itemsB">
+
+        <img src="{{this.webServiceUrl}}/UPLOAD/FOOD/{{item.POSTER}}" />
+        <ion-card-content>
+            <ion-card-title>
+                {{item.ALIAS}}
+            </ion-card-title>
+            <div>
+                <span class="title">{{item.TITLE}}</span>
+
+            </div>
+
+
+        </ion-card-content>
+
+
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="danger" icon-start>
+                    <ion-icon name='star'></ion-icon>
+                    {{item.COST}}원
+                </button>
+            </ion-col>
+
+            <ion-col text-right>
+                <button ion-button clear small color="danger" icon-start >
+                    <ion-icon name='share-alt'></ion-icon>
+                    예약하기
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+
+
+</ion-content>
+<ion-footer>
+
+</ion-footer>

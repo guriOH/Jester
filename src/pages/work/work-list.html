@@ -1,0 +1,67 @@
+﻿<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>졸업작품 경매</ion-title>
+    </ion-navbar>
+
+
+
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="categoryMenu" color="light">
+            <ion-segment-button (click)="changeItemMenus('A')" color="secondary" value="A">
+                미술/조각
+            </ion-segment-button>
+            <ion-segment-button (click)="changeItemMenus('B')" color="secondary" value="B">
+                공연/연극
+            </ion-segment-button>
+            <ion-segment-button (click)="changeItemMenus('C')" color="secondary" value="C">
+                국악/복합
+            </ion-segment-button>
+
+        </ion-segment>
+    </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+
+    <ion-card *ngFor="let item of items; let i = index">
+
+
+        <img src="http://img.youtube.com/vi/{{item.IMG_ALIAS}}/0.jpg"  (click)="showInfo(item)" />
+  
+        <ion-card-content  (click)="showInfo(item)">
+            <ion-card-title>
+                {{item.ALIAS}}
+            </ion-card-title>
+            <p>
+                {{item.COMMENT}}
+            </p>
+        </ion-card-content>
+
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="danger" icon-start>
+                    <ion-icon name='star'></ion-icon>
+                   {{item.USER_ALIAS}}
+                </button>
+            </ion-col>
+            <ion-col text-center>
+                <button ion-button clear small color="danger" icon-start>
+                    <ion-icon name='musical-notes'></ion-icon>
+                    {{item.RNK}}
+                </button>
+            </ion-col>
+            <ion-col text-right>
+                <button ion-button clear small color="danger" icon-start>
+                    <ion-icon name='share-alt'></ion-icon>
+                    {{convertDate(item.MAKE_DTTS)}}
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+  
+</ion-content>
