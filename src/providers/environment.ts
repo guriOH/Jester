@@ -1,8 +1,9 @@
 ﻿export class ENV {
 
-    public static currentEnvironment: string = "development";
+    public static currentEnvironment: string = "production";
     // public static currentEnvironment: string = "production";
 
+    //development : 서버가 개발자에게 있을 때 지금은 서버가 웹서버에 붙어서 production 바꿔줘야 함
     public static development: any = {
         webControllInfo: "http://wwww.lemonCrown.com/aaa/",
         webServicesInfo: "http://192.168.172.191/WebServices/",
